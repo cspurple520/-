@@ -34,7 +34,8 @@ void showpath();
 void print_point(int front);
 void printpath(); 
 void printusermap();
-void print_userpoint(int front);                      
+void print_userpoint(int front);     
+double calculate();                 
 int maze()
 {
 	system("color A1");
@@ -151,7 +152,8 @@ void move()   //记录当前的方向，判断能否走，判断是否到达终点
 			path[step].k=present;
 			system("cls");
 			printusermap(); 
-			printf("你已到达终点，游戏结束！总步数：%d步\n",step); 
+			printf("你已到达终点，游戏结束！总步数：%d步\n",step);
+			printf("你的分数为：%.2f\n",calculate());
 			break;
 		}
 		if(a[current_x+i][current_y+j]!= CANT)
@@ -325,6 +327,16 @@ void showpath()
 	}	
 }
 
+
+double calculate(){
+    double score;
+    // *100
+    // 起点和终点的直线距离 根号下ex - bx  
+    //	sorce : rows , cols ,障碍数n 正比关系    step 反比关系 
+	score = double(rows * cols) * 100 * n / 3/ double(step);
+	return score;
+
+}
 
 /*
    
